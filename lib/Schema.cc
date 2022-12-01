@@ -30,14 +30,6 @@ using boost::property_tree::ptree;
 using boost::property_tree::read_json;
 using boost::property_tree::write_json;
 
-PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::SchemaType schemaType) {
-    return s << strSchemaType(schemaType);
-}
-
-PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::KeyValueEncodingType encodingType) {
-    return s << strEncodingType(encodingType);
-}
-
 namespace pulsar {
 
 static const std::string KEY_SCHEMA_NAME = "key.schema.name";
@@ -47,6 +39,14 @@ static const std::string VALUE_SCHEMA_NAME = "value.schema.name";
 static const std::string VALUE_SCHEMA_TYPE = "value.schema.type";
 static const std::string VALUE_SCHEMA_PROPS = "value.schema.properties";
 static const std::string KV_ENCODING_TYPE = "kv.encoding.type";
+
+PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::KeyValueEncodingType encodingType) {
+    return s << strEncodingType(encodingType);
+}
+
+PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::SchemaType schemaType) {
+    return s << strSchemaType(schemaType);
+}
 
 PULSAR_PUBLIC const char *strEncodingType(KeyValueEncodingType encodingType) {
     switch (encodingType) {

@@ -134,6 +134,10 @@ enum SchemaType
 // Return string representation of result code
 PULSAR_PUBLIC const char *strSchemaType(SchemaType schemaType);
 
+PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::SchemaType schemaType);
+
+PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::KeyValueEncodingType encodingType);
+
 class SchemaInfoImpl;
 
 typedef std::map<std::string, std::string> StringMap;
@@ -199,7 +203,3 @@ class PULSAR_PUBLIC SchemaInfo {
 };
 
 }  // namespace pulsar
-
-PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::SchemaType schemaType);
-
-PULSAR_PUBLIC std::ostream &operator<<(std::ostream &s, pulsar::KeyValueEncodingType encodingType);
