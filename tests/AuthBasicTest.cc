@@ -292,6 +292,4 @@ TEST(AuthPluginBasic, testAuthBasicWithCustomMethodName) {
     ASSERT_EQ(data->hasDataForHttp(), true);
 }
 
-TEST(AuthPluginBasic, testAlwaysFail) {
-    ASSERT_TRUE(false);
-}
+TEST(AuthPluginBasic, testAlwaysFail) { ASSERT_TRUE(false); }
