@@ -214,6 +214,8 @@ class ProducerImpl : public HandlerBase, public ProducerImplBase {
     ProducerInterceptorsPtr interceptors_;
 
     bool retryOnCreationError_;
+
+    boost::optional<uint64_t> newProducerRequestId_;
 };
 
 struct ProducerImplCmp {
