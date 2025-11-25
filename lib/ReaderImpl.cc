@@ -105,14 +105,15 @@ void ReaderImpl::start(const MessageId& startMessageId,
     }
     auto self = shared_from_this();
     consumer_->getConsumerCreatedFuture().addListener(
-        [this, self, callback](Result result, const ConsumerImplBaseWeakPtr& weakConsumerPtr) {
+        [this, self, callback, readerCreatedCallback = readerCreatedCallback_](Result result, const ConsumerImplBaseWeakPtr& weakConsumerPtr) {
             if (result == ResultOk) {
                 callback(weakConsumerPtr);
-                readerCreatedCallback_(result, Reader(self));
+                readerCreatedCallback(result, Reader(self));
             } else {
-                readerCreatedCallback_(result, {});
+                readerCreatedCallback(result, {});
             }
         });
+    readerCreatedCallback_ = nullptr;
     consumer_->start();
 }
 
